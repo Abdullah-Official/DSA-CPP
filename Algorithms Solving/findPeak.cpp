@@ -19,6 +19,6 @@ int findPeakElement(int arr[], int size){
 }
 
 int main(){
-    int arr[3] = {0,1,0};
-    cout << findPeakElement(arr, 3);
+    int arr[5] = {3,4,5,1,2};
+    cout << findPeakElement(arr, 5);
 }
