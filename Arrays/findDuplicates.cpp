@@ -29,7 +29,7 @@ void findDuplicateBrute(int arr[], int n) {
 
 int main(){
     int arr[7] = {5,1,3,2,4,2,3};
-    // findDuplicate(arr, 6);
-    findDuplicateBrute(arr,7);
+    findDuplicate(arr, 6);
+    // findDuplicateBrute(arr,7);
     // cout << (3^1); // for this input
 }
