@@ -36,11 +36,11 @@ int main(){
     }
 
     // third triangle
-    int start = i - 1;  //3-1  = 2
-    while(start > 0){ // 2
-        cout << start; // 2
-        start--;
-    }
+    // int start = i - 1;  //3-1  = 2
+    // while(start > 0){ // 2
+    //     cout << start; // 2
+    //     start--;
+    // }
 
 
     cout << endl;
