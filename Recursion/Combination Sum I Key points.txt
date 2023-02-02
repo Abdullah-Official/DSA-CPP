@@ -1,0 +1,16 @@
+This code implements a backtracking algorithm to find all possible combinations of numbers in the candidates vector that add up to the target.
+
+The function findCombination is a recursive function that takes 5 arguments:
+
+An index (ind) to keep track of which number in the candidates vector is currently being considered
+A vector of integers called candidates
+An integer called target
+A vector of integers called ds to keep track of the current combination
+A vector of vectors called ans to store all the combinations that sum up to the target.
+The base case of the recursion is when the index reaches the end of the candidates vector and the target is 0, in this case, the current combination in ds is added to the ans.
+
+In the findCombination function, if the current number in the candidates vector is less than or equal to the target, it is added to the ds and the function is called again with the new target being the difference between the target and the current number. The current number is then popped out of the ds to try the next possible combination.
+
+The function is also called with the index incremented by 1 to consider the next number in the candidates vector.
+
+The final result is stored in ans and returned from the combinationSum function.
