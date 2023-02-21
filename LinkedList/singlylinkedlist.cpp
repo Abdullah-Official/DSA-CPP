@@ -124,6 +124,20 @@ void print(Node *&head)
     cout << endl;
 }
 
+void reverseLinkedList(Node *&head)
+{
+    Node *prev = NULL;
+    Node *curr = head;
+    while (curr != NULL)
+    {
+        Node *next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+}
+
 int main()
 {
 
@@ -139,12 +153,15 @@ int main()
     insertAtTail(tail, 12);
     insertAtTail(tail, 15);
     print(head);
-    insertAtPosition(head, tail, 3, 21);
+    reverseLinkedList(head);
+    cout << "After reverse: " << endl;
     print(head);
-    insertAtPosition(head, tail, 6, 30);
-    print(head);
-    deleteNode(head, 6);
-    print(head);
+    // insertAtPosition(head, tail, 3, 21);
+    // print(head);
+    // insertAtPosition(head, tail, 6, 30);
+    // print(head);
+    // deleteNode(head, 6);
+    // print(head);
 
     cout << "head: " << head << endl;
     cout << "tail: " << tail << endl;

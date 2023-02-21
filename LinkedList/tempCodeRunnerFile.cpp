@@ -1,4 +1,4 @@
-while (temp != NULL)
-    {
-        cout << temp->data << " ";
-        tem
+
+    insertNode(head, 20);
+    insertAtHead(head, 30);
+    insertAtHead(head, 40);
