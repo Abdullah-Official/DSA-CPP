@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 using namespace std;
 
 class Node
@@ -138,6 +139,75 @@ void reverseLinkedList(Node *&head)
     head = prev;
 }
 
+bool detectLoop1(Node* head){
+    if(head == NULL) return false;
+
+    map<Node*, bool> visited;
+    Node* temp = head;
+
+    while(temp != NULL){
+        
+        // cycle present
+        if(visited[temp] == true)
+        {
+        cout << "Cycle is present at " << temp->data << endl;
+        return true;
+        }
+        visited[temp] = true;
+        temp = temp->next;
+    }
+
+    return false;
+}
+
+Node* detectLoop2(Node* head){
+    if(head == NULL) return NULL;
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(slow != NULL && fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast->next;
+        }
+        slow = slow->next;
+        if(slow == fast){
+            cout << "Cycle is present at " << slow->data << endl;
+            return slow;
+        }
+    }
+
+    return NULL;
+}
+
+Node* getStartingNodeOfCycle(Node* head){
+    if(head == NULL) return NULL;
+
+    Node* slow = head;
+    Node* entry = detectLoop2(head);
+
+    while(slow != entry){
+        slow = slow->next;
+        entry = entry->next;
+    }
+    return slow;
+}
+
+void removeLoop(Node* head){
+    if(head == NULL) return;
+
+    Node* startOfLoop = getStartingNodeOfCycle(head);
+    Node* temp = startOfLoop;
+
+    while(temp->next != startOfLoop){
+        temp = temp -> next;
+    }
+
+    temp->next = NULL;
+
+}
+
 int main()
 {
 
@@ -153,9 +223,9 @@ int main()
     insertAtTail(tail, 12);
     insertAtTail(tail, 15);
     print(head);
-    reverseLinkedList(head);
-    cout << "After reverse: " << endl;
-    print(head);
+    // reverseLinkedList(head);
+    // cout << "After reverse: " << endl;
+    // print(head);
     // insertAtPosition(head, tail, 3, 21);
     // print(head);
     // insertAtPosition(head, tail, 6, 30);
@@ -163,9 +233,23 @@ int main()
     // deleteNode(head, 6);
     // print(head);
 
-    cout << "head: " << head << endl;
-    cout << "tail: " << tail << endl;
+    // cout << "head: " << head << endl;
+    // cout << "tail: " << tail << endl;
+    tail->next = head->next;
+    // if(detectLoop1(head)){
+    //     cout << "Cycle is present" << endl;
+    // }else{
+    //     cout << "No cycle is present" << endl;
+    // }
 
+    cout << "Loop Node:" << detectLoop2(head) << endl;
+    Node* loop = getStartingNodeOfCycle(head);
+     print(head);
+    cout << "Starting Loop Node: " << loop->data << endl;
+    cout << "REMOVING " << endl;
+    removeLoop(head);
+     print(head);
+    cout << "Loop Node:" << detectLoop2(head) << endl;
     // insertAtHead(head,12);
     // insertAtHead(head,13);
     // print(head);

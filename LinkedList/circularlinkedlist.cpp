@@ -1,4 +1,5 @@
 #include <iostream>
+#include<map>
 using namespace std;
 
 class Node
@@ -151,6 +152,26 @@ void deleteNode(Node *&head, int pos)
 
     curr->next = NULL;
     delete curr;
+}
+
+bool detectLoop(Node* head){
+    if(head == NULL) return false;
+
+    map<Node*, bool> visited;
+    Node* temp = head;
+
+    while(temp != NULL){
+        
+        // cycle present
+        if(visited[temp] == true)
+        {
+        return true;
+        }
+        visited[temp] = true;
+        temp = temp->next;
+    }
+
+    return false;
 }
 
 
